@@ -24,13 +24,13 @@ export const Logo = ({ size = "sm" }) => {
         className={
           large ? "mb-2 block h-8 w-5 bg-current sm:h-10 sm:w-6" : "mb-0.5 block h-5 w-[12px] bg-current md:h-6 md:w-[15px]"
         }
-        style={maskStyle("/question-mark.png")}
+        style={maskStyle("/question-mark.svg")}
       />
       <span
         role="img"
         aria-label="INSOLITE"
         className={large ? "block h-14 bg-current sm:h-16" : "block h-10 bg-current md:h-12"}
-        style={{ ...maskStyle("/wordmark-insolite.png"), aspectRatio: "4.3" }}
+        style={{ ...maskStyle("/wordmark-insolite.svg"), aspectRatio: "4.3" }}
       />
 
       <span

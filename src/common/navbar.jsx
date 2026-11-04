@@ -95,14 +95,14 @@ const MobileMenu = ({ onClose, lang, t }) => (
       </div>
     </div>
 
-    <nav aria-label="Categories" className="flex flex-1 flex-col justify-center px-6">
+    <nav aria-label="Categories" translate="no" className="flex flex-1 flex-col justify-center px-6">
       <ul>
         {categories.map((item) => (
           <li key={item.key}>
             <Link
               to={item.to}
               onClick={onClose}
-              className="block border-b border-ink/10 py-5 font-serif text-4xl leading-none transition-colors hover:text-oxblood"
+              className="block border-b border-ink/10 py-5 font-serif text-4xl leading-none uppercase tracking-[0.02em] transition-colors hover:text-oxblood"
             >
               {item.label[lang]}
             </Link>
@@ -192,7 +192,7 @@ const Navbar = () => {
         </div>
 
         {/* Category navigation (desktop) */}
-        <nav aria-label="Categories" className="hidden border-t border-ink/10 md:block">
+        <nav aria-label="Categories" translate="no" className="hidden border-t border-ink/10 md:block">
           <ul className="mx-auto flex max-w-[1440px] items-center justify-center gap-8 px-12 lg:gap-16">
             {categories.map((item) => (
               <li key={item.key}>

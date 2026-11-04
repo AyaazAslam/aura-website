@@ -98,7 +98,7 @@ const Footer = () => {
           <div className="lg:col-span-2 lg:col-start-5">
             <h2 className={columnTitle}>{t.explore}</h2>
 
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-6 space-y-4" translate="no">
               {categories.map((item) => (
                 <li key={item.key}>
                   <Link
