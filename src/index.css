@@ -57,6 +57,18 @@
   }
 }
 
+/* Visitors who ask the system for less motion get no zooms, fades or smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Small uppercase label used above headings. Set its colour where it is used. */
 @utility eyebrow {
   @apply font-sans text-[10px] font-medium uppercase tracking-[0.34em];

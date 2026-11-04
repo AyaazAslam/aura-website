@@ -11,6 +11,8 @@ export const runwayStories = [
   },
   {
     title: "A New Era of Elegance",
+    // Same title as a home fashion story, so it needs its own URL.
+    slug: "a-new-era-of-elegance-designers",
     category: "DESIGNERS",
     image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=85",
   },

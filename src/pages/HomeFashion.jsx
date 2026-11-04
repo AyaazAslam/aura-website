@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
 import { useLanguage } from "../common/language";
 import { storyPath } from "../common/stories";
 import { StoryImage } from "../common/ui";
@@ -14,10 +14,11 @@ const copy = {
     titleA: "The Fashion",
     titleB: "Edit.",
     intro: "The latest looks, statement pieces, and personal style moments worth saving.",
-    slideOf: (n, total) => `${n} of ${total}`,
     showStory: (n) => `Show story ${n}`,
     prev: "Previous stories",
     next: "Next stories",
+    pause: "Pause stories",
+    play: "Play stories",
     all: "Explore all fashion stories",
   },
   FR: {
@@ -26,10 +27,11 @@ const copy = {
     titleA: "La sélection",
     titleB: "Mode.",
     intro: "Les looks du moment, pièces phares et moments de style à garder.",
-    slideOf: (n, total) => `${n} sur ${total}`,
     showStory: (n) => `Afficher l’histoire ${n}`,
     prev: "Histoires précédentes",
     next: "Histoires suivantes",
+    pause: "Mettre le défilement en pause",
+    play: "Reprendre le défilement",
     all: "Voir toutes les histoires mode",
   },
 };
@@ -48,7 +50,8 @@ const HomeFashion = () => {
   const fashionStories = useLocalizedStories(baseStories);
   const trackRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(false); // hover or focus inside the section
+  const [stopped, setStopped] = useState(false); // the visitor turned autoplay off
 
   const scrollToCard = useCallback((index) => {
     const track = trackRef.current;
@@ -104,14 +107,15 @@ const HomeFashion = () => {
     scrollToCard(Math.max(activeIndex - 1, 0));
   };
 
-  // Autoplay pauses while hovered or focused, and is off for reduced motion.
+  // Autoplay pauses while hovered or focused, can be stopped by the visitor, and is off for
+  // reduced motion.
   useEffect(() => {
-    if (paused || prefersReducedMotion()) return undefined;
+    if (paused || stopped || prefersReducedMotion()) return undefined;
 
     const timer = setInterval(showNext, AUTOPLAY_DELAY);
 
     return () => clearInterval(timer);
-  }, [paused, showNext]);
+  }, [paused, stopped, showNext]);
 
   return (
     <section
@@ -149,7 +153,6 @@ const HomeFashion = () => {
               key={story.number}
               to={storyPath(story)}
               aria-roledescription="slide"
-              aria-label={t.slideOf(index + 1, fashionStories.length)}
               className="group w-[80%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-linen">
@@ -202,6 +205,20 @@ const HomeFashion = () => {
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setStopped((value) => !value)}
+              aria-label={stopped ? t.play : t.pause}
+              aria-pressed={stopped}
+              className="flex h-10 w-10 items-center justify-center border border-ink/20 transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-ivory"
+            >
+              {stopped ? (
+                <Play className="h-4 w-4" strokeWidth={1.5} />
+              ) : (
+                <Pause className="h-4 w-4" strokeWidth={1.5} />
+              )}
+            </button>
+
             <button
               type="button"
               onClick={showPrevious}

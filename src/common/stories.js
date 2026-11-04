@@ -10,8 +10,11 @@ export const slugify = (text) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-// Paths always come from the English title, so a story keeps its URL in both languages.
-export const storyPath = (story) => `/stories/${slugify(story.en ?? story.title)}`;
+// The URL slug comes from the English title, so a story keeps its URL in both languages.
+// A story can set `slug` itself when another story has the same title (see runwayStories).
+export const storySlug = (story) => story.slug ?? slugify(story.en ?? story.title);
+
+export const storyPath = (story) => `/stories/${storySlug(story)}`;
 
 // Stories are either full image URLs or Unsplash photo IDs.
 export const resolveImage = (image, width = 900) =>

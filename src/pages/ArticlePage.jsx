@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useLanguage } from "../common/language";
-import { localizeStory, resolveImage, slugify } from "../common/stories";
+import { localizeStory, resolveImage, storySlug } from "../common/stories";
 import { StoryImage } from "../common/ui";
 import { useDocumentTitle } from "../common/useDocumentTitle";
 import { fashionStories as homeFashionStories } from "../data/homeFashionStories";
@@ -26,7 +26,7 @@ const allStories = [
   ...editorStories,
 ];
 
-const findStory = (slug) => allStories.find((story) => slugify(story.title) === slug);
+const findStory = (slug) => allStories.find((story) => storySlug(story) === slug);
 
 const copy = {
   EN: {

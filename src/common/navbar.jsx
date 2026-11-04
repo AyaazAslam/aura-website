@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "./language";
 import { categories } from "./navigation";
@@ -125,8 +125,17 @@ const MobileMenu = ({ onClose, lang, t }) => (
 
 const Navbar = () => {
   const { lang } = useLanguage();
+  const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState(pathname);
   const t = copy[lang];
+
+  // Browser back or forward should not leave the mobile menu covering the new page.
+  // Adjusting state during render avoids a second render pass from an effect.
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
+    setMenuOpen(false);
+  }
 
   useEffect(() => {
     if (!menuOpen) return;

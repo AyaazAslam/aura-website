@@ -57,7 +57,9 @@ const NewsletterForm = ({ id, labels, className = "" }) => {
       <div className="flex items-end gap-4 border-b border-ivory/60 pb-3 transition-colors duration-300 focus-within:border-ivory">
         <input
           id={id}
+          name="email"
           type="email"
+          autoComplete="email"
           required
           value={email}
           onChange={(e) => {
