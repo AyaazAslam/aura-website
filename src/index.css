@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 /*
-  Design tokens. Ivory and ink carry the layout; oxblood is the single accent.
-  Keep new colors out of components: add them here first.
+  Design tokens. Ivory and ink carry the layout; the accent is brand violet
+  (client palette — Pantone 7662 C). Token name stays `oxblood` so existing
+  Tailwind classes (bg-oxblood, text-oxblood, hover:bg-oxblood, …) keep working
+  without touching article/section markup.
+
+  Brand violet palette (do not invent nearby reds):
+  - #784888  primary accent (exact client HEX)
+  - #492173  deep accent (most faithful deep HEX)
+  - #3F1B63  alternate deep
+  - #2A0E4E  darkest nuance
 */
 @theme {
   --font-serif: "Cormorant Garamond", "Iowan Old Style", "Times New Roman", serif;
@@ -12,8 +20,10 @@
   --color-ivory: #f8f5f0;
   --color-linen: #efe9e0;
   --color-stone: #6e665e;
-  --color-oxblood: #702632;
-  --color-oxblood-deep: #521b25;
+  /* Primary brand violet — replaces the former red accent. */
+  --color-oxblood: #784888;
+  /* Deep brand violet — hover / pressed / strong fills. */
+  --color-oxblood-deep: #492173;
 
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 

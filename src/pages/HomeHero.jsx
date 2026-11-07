@@ -34,24 +34,31 @@ const HomeHero = () => {
   return (
     <section className="bg-ivory">
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-end gap-14 px-5 pt-12 pb-16 sm:px-8 md:pt-16 md:pb-24 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:pt-20">
-        {/* Copy */}
+        {/*
+          Copy block.
+          HUMEUR. / MOOD. stays a stylistic concept but is capped so it does not
+          cannibalize the rest of the first screen (hierarchy fix).
+          Eyebrow → lead → title gaps are tightened for a closer subtitle rhythm.
+        */}
         <div className="order-2 lg:order-1 lg:col-span-5 lg:pb-10">
           <p className="eyebrow motion-safe:animate-fade-up">{t.eyebrow}</p>
 
-          <p className="mt-8 font-serif text-3xl italic motion-safe:animate-fade-up sm:text-4xl">
+          <p className="mt-4 font-serif text-3xl italic motion-safe:animate-fade-up sm:text-4xl">
             {t.lead}
           </p>
 
-          <h1 className="font-serif text-[clamp(5rem,15vw,11.5rem)] leading-[0.8] tracking-[-0.03em] motion-safe:animate-fade-up">
+          {/* Was clamp(5rem, 15vw, 11.5rem) — reduced so the word stays expressive, not dominant */}
+          <h1 className="mt-1 font-serif text-[clamp(3.25rem,10vw,7.5rem)] leading-[0.85] tracking-[-0.03em] motion-safe:animate-fade-up">
             <span className="sr-only">{t.lead} </span>
             <span className="italic">{t.title}</span>
           </h1>
 
-          <p className="mt-10 max-w-sm font-sans text-base leading-8 text-stone motion-safe:animate-fade-up">
+          {/* Consistent space under body copy before the CTA / next visual */}
+          <p className="mt-8 max-w-sm font-sans text-base leading-8 text-stone motion-safe:animate-fade-up">
             {t.body}
           </p>
 
-          <a href="#latest" className="btn-solid mt-10 motion-safe:animate-fade-up">
+          <a href="#latest" className="btn-solid mt-8 motion-safe:animate-fade-up">
             {t.cta}
             <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
           </a>

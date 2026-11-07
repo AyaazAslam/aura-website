@@ -90,6 +90,20 @@ const Footer = () => {
               {t.description}
             </p>
 
+            {/* Client headquarters + contact — kept in sync via siteConfig */}
+            <p className="mt-6 font-sans text-sm leading-7 text-ivory/65">
+              {siteConfig.address}
+            </p>
+
+            {siteConfig.contactEmail && (
+              <a
+                href={`mailto:${siteConfig.contactEmail}`}
+                className="mt-2 inline-block font-sans text-sm text-ivory/80 transition-colors duration-300 hover:text-ivory"
+              >
+                {siteConfig.contactEmail}
+              </a>
+            )}
+
             <p className="mt-6 font-sans text-[10px] tracking-[0.25em] text-ivory/45 uppercase">
               {t.location}
             </p>

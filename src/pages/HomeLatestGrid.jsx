@@ -26,12 +26,12 @@ const HomeLatestGrid = () => {
   return (
     <section id="latest" className="bg-ivory py-20 md:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        {/* Heading */}
+        {/* Heading — eyebrow close to title; grid uses shared mt-12 rhythm */}
         <div className="flex flex-col gap-5 border-b border-ink pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="eyebrow text-stone">{t.eyebrow}</p>
 
-            <h2 className="mt-5 font-serif text-6xl leading-none sm:text-7xl lg:text-8xl">
+            <h2 className="mt-3 font-serif text-6xl leading-none sm:text-7xl lg:text-8xl">
               {t.title}
             </h2>
           </div>
@@ -40,7 +40,7 @@ const HomeLatestGrid = () => {
         </div>
 
         {/* Grid */}
-        <div className="mt-14 grid gap-x-7 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {latestStories.map((story) => (
             <Link key={story.category} to={storyPath(story)} className="group">
               <div className="aspect-[4/5] overflow-hidden bg-linen">

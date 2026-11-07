@@ -46,7 +46,20 @@ export const Logo = ({ size = "sm" }) => {
   );
 };
 
-// `inverted` is for dark backgrounds.
+/**
+ * LanguageToggle — FR / EN control.
+ *
+ * Behaviour contract (must stay true once live):
+ * - The underline sits ONLY under the active language.
+ * - When page copy is French, FR is underlined; when English, EN is underlined.
+ * - `lang` from LanguageProvider is the single source of truth for both the
+ *   underline and all `copy[lang]` / localized story strings.
+ *
+ * Layout: extra horizontal padding so the block sits clear of the logo and
+ * hamburger on small screens (was reading as cramped against the wordmark).
+ *
+ * `inverted` = light text for dark backgrounds (footer).
+ */
 export const LanguageSwitch = ({ className = "", inverted = false }) => {
   const { lang, setLang } = useLanguage();
 
@@ -54,35 +67,46 @@ export const LanguageSwitch = ({ className = "", inverted = false }) => {
   const idleTone = inverted
     ? "text-ivory/50 hover:text-ivory"
     : "text-stone hover:text-ink";
+  const ruleTone = inverted ? "bg-ivory" : "bg-ink";
 
   return (
     <div
       role="group"
       aria-label="Language"
-      className={`items-center gap-2 font-sans text-[11px] font-medium tracking-[0.2em] ${className}`}
+      className={`items-center gap-3 px-2 font-sans text-[11px] font-medium tracking-[0.2em] sm:gap-3.5 sm:px-3 ${className}`}
     >
-      {["FR", "EN"].map((code, index) => (
-        <span key={code} className="flex items-center gap-2">
-          {index > 0 && (
-            <span aria-hidden="true" className="opacity-40">
-              /
-            </span>
-          )}
+      {["FR", "EN"].map((code, index) => {
+        const isActive = lang === code;
 
-          <button
-            type="button"
-            onClick={() => setLang(code)}
-            aria-pressed={lang === code}
-            className={`py-1 transition-colors duration-300 ${
-              lang === code
-                ? `${activeTone} underline underline-offset-8`
-                : idleTone
-            }`}
-          >
-            {code}
-          </button>
-        </span>
-      ))}
+        return (
+          <span key={code} className="flex items-center gap-3 sm:gap-3.5">
+            {index > 0 && (
+              <span aria-hidden="true" className="opacity-35">
+                /
+              </span>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setLang(code)}
+              aria-pressed={isActive}
+              aria-current={isActive ? "true" : undefined}
+              className={`relative py-1.5 transition-colors duration-300 ${
+                isActive ? activeTone : idleTone
+              }`}
+            >
+              {code}
+              {/* Underline mirrors the live language — never a static “EN” mark */}
+              <span
+                aria-hidden="true"
+                className={`absolute inset-x-0 -bottom-0.5 h-px origin-left transition-transform duration-300 ${ruleTone} ${
+                  isActive ? "scale-x-100" : "scale-x-0"
+                }`}
+              />
+            </button>
+          </span>
+        );
+      })}
     </div>
   );
 };

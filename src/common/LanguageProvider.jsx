@@ -3,14 +3,18 @@ import { LanguageContext } from "./language";
 
 const STORAGE_KEY = "insolite-lang";
 
-// Reads the saved language, and falls back to English if storage is blocked or empty.
+/**
+ * Reads the saved language.
+ * Default is FR so first-time visitors see French copy with FR underlined
+ * (Paris magazine). Saved preference still wins on return visits.
+ */
 const readSavedLang = () => {
   try {
     const saved = window.localStorage.getItem(STORAGE_KEY);
 
-    return saved === "FR" || saved === "EN" ? saved : "EN";
+    return saved === "FR" || saved === "EN" ? saved : "FR";
   } catch {
-    return "EN";
+    return "FR";
   }
 };
 

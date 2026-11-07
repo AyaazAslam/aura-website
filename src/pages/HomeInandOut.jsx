@@ -18,17 +18,18 @@ const HomeInandOut = () => {
   return (
     <section id="in-out" className="bg-ink py-20 text-ivory md:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        <div className="mb-14 flex flex-col gap-5 border-b border-ivory/15 pb-8 md:flex-row md:items-end md:justify-between">
+        {/* Spacing only — In & Out content / art direction left unchanged */}
+        <div className="mb-12 flex flex-col gap-5 border-b border-ivory/15 pb-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="eyebrow text-ivory/55">{t.eyebrow}</p>
 
-            <h2 className="mt-5 font-serif text-6xl leading-none sm:text-7xl lg:text-8xl">
+            <h2 className="mt-3 font-serif text-6xl leading-none sm:text-7xl lg:text-8xl">
               {t.titleA} <em className="italic text-ivory/60">&amp;</em> {t.titleB}
             </h2>
           </div>
         </div>
 
-        <div className="grid gap-14 md:grid-cols-2 md:gap-10">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-10">
           {inAndOutStories.map((story) => (
             <Link key={story.category} to={storyPath(story)} className="group">
               <div className="aspect-[5/4] overflow-hidden bg-ivory/10">

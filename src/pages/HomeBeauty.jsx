@@ -30,11 +30,12 @@ const HomeBeauty = () => {
   return (
     <section id="beauty" className="bg-ivory py-20 md:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        {/* Eyebrow close to heading; mt-12 before the story grid matches Fashion / Latest */}
         <div className="flex flex-col justify-between gap-6 border-b border-ink/15 pb-8 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-stone">{t.eyebrow}</p>
 
-            <h2 className="mt-5 font-serif text-5xl leading-none sm:text-6xl lg:text-7xl">
+            <h2 className="mt-3 font-serif text-5xl leading-none sm:text-6xl lg:text-7xl">
               {t.titleA} <em className="italic text-stone">{t.titleB}</em>
             </h2>
           </div>
@@ -42,7 +43,7 @@ const HomeBeauty = () => {
           <p className="max-w-xs font-sans text-sm leading-7 text-stone">{t.intro}</p>
         </div>
 
-        <div className="mt-14 grid gap-x-7 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {beautyStories.map((story) => (
             <Link key={story.number} to={storyPath(story)} className="group">
               <div className="relative aspect-[4/5] overflow-hidden bg-linen">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { siteConfig } from "./siteConfig";
 
-// Designed for dark backgrounds (ink or oxblood).
+// Designed for dark backgrounds (ink or brand violet / oxblood token).
 // Posts { email } to siteConfig.newsletterEndpoint. The success message only shows once the
 // endpoint has accepted the address. Without an endpoint, the form says sign-up is not
 // available yet instead of pretending the address was saved.

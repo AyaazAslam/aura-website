@@ -51,22 +51,22 @@ const HomeBrandSpotlight = () => {
           </p>
         </div>
 
-        {/* Content */}
+        {/* Content — eyebrow sits close to the heading; body → CTA spacing standardized */}
         <div className="max-w-xl md:pl-4">
           <p className="eyebrow text-stone">{t.eyebrow}</p>
 
-          <h2 className="mt-6 font-serif text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
+          <h2 className="mt-3 font-serif text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
             {t.titleA}
             <span className="block italic text-oxblood">{t.titleB}</span>
           </h2>
 
-          <div className="mt-8 h-px w-16 bg-ink" />
+          <div className="mt-6 h-px w-16 bg-ink" />
 
-          <p className="mt-8 font-sans text-base leading-8 text-stone">{t.bodyA}</p>
+          <p className="mt-6 font-sans text-base leading-8 text-stone">{t.bodyA}</p>
 
-          <p className="mt-5 font-sans text-base leading-8 text-stone">{t.bodyB}</p>
+          <p className="mt-4 font-sans text-base leading-8 text-stone">{t.bodyB}</p>
 
-          <a href="#fashion" className="link-line mt-10">
+          <a href="#fashion" className="link-line mt-8">
             {t.cta}
             <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden="true" />
           </a>

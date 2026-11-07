@@ -167,9 +167,13 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Main row */}
-        <div className="mx-auto grid h-24 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8 md:h-28 lg:px-12">
-          <div className="flex items-center">
+        {/*
+          Main row — three columns give the language control breathing room
+          away from the centered logo and the hamburger (mobile spacing fix).
+        */}
+        <div className="mx-auto grid h-24 max-w-[1440px] grid-cols-[minmax(4.5rem,1fr)_auto_minmax(4.5rem,1fr)] items-center px-5 sm:px-8 md:h-28 lg:px-12">
+          <div className="flex items-center justify-start">
+            {/* Desktop: language lives on the left, clear of the wordmark */}
             <LanguageSwitch className="hidden md:flex" />
 
             <button
@@ -188,7 +192,8 @@ const Navbar = () => {
             <Logo />
           </Link>
 
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end gap-3 sm:gap-4">
+            {/* Mobile: language on the far right so it never crowds the logo */}
             <LanguageSwitch className="flex md:hidden" />
 
             <Link

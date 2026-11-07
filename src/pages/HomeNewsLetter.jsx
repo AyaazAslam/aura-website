@@ -30,16 +30,17 @@ const HomeNewsLetter = () => {
   const { lang } = useLanguage();
   const t = copy[lang];
 
+  // bg-oxblood now resolves to brand violet #784888 (see index.css tokens).
   return (
     <section id="subscribe" className="bg-oxblood py-20 text-ivory md:py-28">
       <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
         <p className="eyebrow text-ivory/70">{t.eyebrow}</p>
 
-        <h2 className="mx-auto mt-6 max-w-3xl font-serif text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
+        <h2 className="mx-auto mt-3 max-w-3xl font-serif text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
           {t.title}
         </h2>
 
-        <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-8 text-ivory/75">
+        <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-8 text-ivory/75">
           {t.body}
         </p>
 

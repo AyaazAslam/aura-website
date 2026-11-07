@@ -129,12 +129,12 @@ const HomeFashion = () => {
       className="bg-ivory py-20 md:py-28"
     >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        {/* Heading */}
+        {/* Heading — tighter eyebrow→title; consistent gap before the image track */}
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-stone">{t.eyebrow}</p>
 
-            <h2 className="mt-5 font-serif text-5xl leading-none sm:text-6xl lg:text-7xl">
+            <h2 className="mt-3 font-serif text-5xl leading-none sm:text-6xl lg:text-7xl">
               {t.titleA} <em className="italic text-oxblood">{t.titleB}</em>
             </h2>
           </div>
@@ -142,11 +142,11 @@ const HomeFashion = () => {
           <p className="max-w-sm font-sans text-sm leading-7 text-stone">{t.intro}</p>
         </div>
 
-        {/* Track */}
+        {/* Track — shared post-copy → imagery rhythm (mt-12) */}
         <div
           ref={trackRef}
           onScroll={handleScroll}
-          className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto sm:gap-6 md:mt-16"
+          className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto sm:gap-6 md:mt-12"
         >
           {fashionStories.map((story, index) => (
             <Link
