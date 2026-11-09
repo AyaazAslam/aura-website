@@ -97,17 +97,29 @@ const MobileMenu = ({ onClose, lang, t }) => (
 
     <nav aria-label="Categories" translate="no" className="flex flex-1 flex-col justify-center px-6">
       <ul>
-        {categories.map((item) => (
-          <li key={item.key}>
-            <Link
-              to={item.to}
-              onClick={onClose}
-              className="block border-b border-ink/10 py-5 font-serif text-4xl leading-none uppercase tracking-[0.02em] transition-colors hover:text-oxblood"
-            >
-              {item.label[lang]}
-            </Link>
-          </li>
-        ))}
+        {categories.map((item) => {
+          const isInOut = item.key === "in-out";
+
+          return (
+            <li key={item.key}>
+              <Link
+                to={item.to}
+                onClick={onClose}
+                className={`block border-b border-ink/10 py-5 font-serif text-4xl leading-none uppercase tracking-[0.02em] transition-colors hover:text-oxblood ${
+                  isInOut ? "text-oxblood" : ""
+                }`}
+              >
+                {item.label[lang]}
+                {/* In & Out gets a playful cue in the mobile menu */}
+                {isInOut && (
+                  <span aria-hidden="true" className="ml-3 font-sans text-sm tracking-[0.2em] normal-case">
+                    ↑↓
+                  </span>
+                )}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
 

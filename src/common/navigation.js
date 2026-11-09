@@ -1,15 +1,13 @@
 // Shared site navigation. Used by the header and the footer.
-// Edito is a dedicated page (not a home section) so the front page stays intact.
+// Order from client: Edito → Beauty → Lifestyle → Gourmet → Design → In & Out → Article
 export const categories = [
   { key: "edito", label: { EN: "Edito", FR: "Edito" }, to: "/edito" },
   { key: "beauty", label: { EN: "Beauty", FR: "Beauté" }, to: "/#beauty" },
-  // IN = likes = UP / OUT = dislikes = DOWN — dedicated graphic page
-  { key: "in-out", label: { EN: "In & Out", FR: "In & Out" }, to: "/in-out" },
-  // Fashion removed from the main menu — not used for this client build.
   { key: "lifestyle", label: { EN: "Lifestyle", FR: "Lifestyle" }, to: "/lifestyle" },
   { key: "gourmet", label: { EN: "Gourmet", FR: "Gourmet" }, to: "/gourmet" },
   { key: "design", label: { EN: "Design", FR: "Design" }, to: "/design" },
-  // Articles sits last — after Design (URL stays /blog)
+  // IN = likes = UP / OUT = dislikes = DOWN
+  { key: "in-out", label: { EN: "In & Out", FR: "In & Out" }, to: "/in-out" },
   { key: "blog", label: { EN: "Article", FR: "Article" }, to: "/blog" },
 ];
 

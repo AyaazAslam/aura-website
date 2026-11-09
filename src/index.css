@@ -6,11 +6,10 @@
   Tailwind classes (bg-oxblood, text-oxblood, hover:bg-oxblood, …) keep working
   without touching article/section markup.
 
-  Brand violet palette (do not invent nearby reds):
-  - #784888  primary accent (exact client HEX)
-  - #492173  deep accent (most faithful deep HEX)
-  - #3F1B63  alternate deep
-  - #2A0E4E  darkest nuance
+  Brand violet palette — SAME VIOLET EVERYWHERE (no random purples):
+  - #784888  primary accent (exact client HEX) → oxblood
+  - #492173  deep accent → oxblood-deep
+  - #2A0E4E  darkest nuance → violet-night (OUT panels, big fills)
 */
 @theme {
   --font-serif: "Cormorant Garamond", "Iowan Old Style", "Times New Roman", serif;
@@ -20,10 +19,12 @@
   --color-ivory: #f8f5f0;
   --color-linen: #efe9e0;
   --color-stone: #6e665e;
-  /* Primary brand violet — replaces the former red accent. */
+  /* Primary brand violet — exact client HEX */
   --color-oxblood: #784888;
-  /* Deep brand violet — hover / pressed / strong fills. */
+  /* Deep brand violet */
   --color-oxblood-deep: #492173;
+  /* Darkest brand violet — OUT / night panels only */
+  --color-violet-night: #2A0E4E;
 
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -37,6 +38,16 @@
     to {
       opacity: 1;
       transform: none;
+    }
+  }
+
+  /* Horizontal ticker for the In & Out “taste axis” */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
     }
   }
 }
