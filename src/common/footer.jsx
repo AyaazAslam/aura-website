@@ -81,7 +81,7 @@ const Footer = () => {
         {/* Brand — logo scales down on mobile so it matches header proportions */}
         <div className="flex flex-col items-center border-b border-ivory/15 pb-10 text-center sm:pb-14">
           <Link
-            to="/edito"
+            to="/"
             aria-label="Insolite Magazine home"
             className="scale-[0.85] text-ivory sm:scale-100"
           >

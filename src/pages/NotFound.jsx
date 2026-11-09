@@ -8,14 +8,14 @@ const copy = {
     title: "This page has moved, or never existed.",
     body: "The story you were looking for may have been retired from this issue.",
     home: "Return home",
-    magazine: "Open the magazine",
+    edito: "Read the Edito",
   },
   FR: {
     eyebrow: "Erreur 404",
     title: "Cette page a été déplacée, ou n'a jamais existé.",
     body: "L'article que vous cherchez n'est peut-être plus dans ce numéro.",
     home: "Retour à l'accueil",
-    magazine: "Voir le magazine",
+    edito: "Lire l’Edito",
   },
 };
 
@@ -38,12 +38,12 @@ const NotFound = () => {
       </p>
 
       <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-        <Link to="/edito" className="btn-solid">
+        <Link to="/" className="btn-solid">
           {t.home}
         </Link>
 
-        <Link to="/magazine" className="btn-line">
-          {t.magazine}
+        <Link to="/edito" className="btn-line">
+          {t.edito}
         </Link>
       </div>
     </main>

@@ -57,7 +57,7 @@ const HomeHero = () => {
             {t.body}
           </p>
 
-          <a href="/magazine#latest" className="btn-solid mt-7 motion-safe:animate-fade-up sm:mt-8">
+          <a href="#latest" className="btn-solid mt-7 motion-safe:animate-fade-up sm:mt-8">
             {t.cta}
             <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
           </a>

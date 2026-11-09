@@ -222,7 +222,7 @@ const InOut = () => {
       </div>
 
       <div className="border-t border-ivory/15 px-5 py-10 text-center sm:px-8">
-        <Link to="/edito" className="link-line text-ivory/80 hover:text-ivory">
+        <Link to="/" className="link-line text-ivory/80 hover:text-ivory">
           {t.back}
         </Link>
       </div>

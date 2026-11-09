@@ -6,9 +6,8 @@ import HomeLatestGrid from "./HomeLatestGrid";
 import HomeNewsLetter from "./HomeNewsLetter";
 
 /**
- * Home page section order.
- * Fashion section removed — not needed for this client build.
- * EDITO lives on `/edito` via the main menu.
+ * Full magazine home (`/`).
+ * Edito and In & Out stay on their own menu tabs (`/edito`, `/in-out`).
  */
 const Home = () => {
   return (

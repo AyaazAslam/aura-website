@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LanguageProvider from "./common/LanguageProvider";
 import ScrollToTop from "./common/ScrollToTop";
@@ -12,6 +12,11 @@ import Forthcoming from "./pages/Forthcoming";
 import NotFound from "./pages/NotFound";
 import ArticlePage from "./pages/ArticlePage";
 
+/**
+ * Routing — full magazine on `/` (home).
+ * Edito, In & Out, and other sections stay separate menu tabs/pages
+ * like before (not forced as the only landing page).
+ */
 function App() {
   return (
     <LanguageProvider>
@@ -23,11 +28,8 @@ function App() {
 
           <div className="flex-1">
             <Routes>
-              {/* Site default landing — Edito (matches Vercel `/` → `/edito`) */}
-              <Route path="/" element={<Navigate to="/edito" replace />} />
+              <Route path="/" element={<Home />} />
               <Route path="/edito" element={<Edito />} />
-              {/* Full magazine home (Hero, Beauty, Latest, …) */}
-              <Route path="/magazine" element={<Home />} />
               <Route path="/in-out" element={<InOut />} />
 
               {Object.entries(forthcomingPages).map(([slug, page]) => (
