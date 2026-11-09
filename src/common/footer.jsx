@@ -149,6 +149,12 @@ const Footer = () => {
               </li>
 
               <li>
+                <Link to="/blog" className={navLink}>
+                  Blog
+                </Link>
+              </li>
+
+              <li>
                 <Link to="/about" className={navLink}>
                   {t.about}
                 </Link>
