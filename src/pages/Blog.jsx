@@ -59,9 +59,9 @@ const Blog = () => {
               key={post.slug}
               className="border-b border-ink/10 pb-16 last:border-b-0 last:pb-0 md:pb-24"
             >
-              {/* Same mobile image language as Edito — centered, padded, natural height */}
+              {/* Narrow width / natural height — same mobile portrait as Edito reference */}
               <figure>
-                <div className="mx-auto w-[78%] max-w-[320px] overflow-hidden bg-linen sm:w-[70%] sm:max-w-[380px] md:w-full md:max-w-[520px] md:aspect-[4/5]">
+                <div className="editorial-portrait md:mx-auto md:max-w-[420px] md:aspect-[4/5]">
                   <StoryImage
                     src={post.image}
                     alt={post.title}

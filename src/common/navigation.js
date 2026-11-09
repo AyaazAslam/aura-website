@@ -2,7 +2,6 @@
 // Edito is a dedicated page (not a home section) so the front page stays intact.
 export const categories = [
   { key: "edito", label: { EN: "Edito", FR: "Edito" }, to: "/edito" },
-  { key: "blog", label: { EN: "Blog", FR: "Blog" }, to: "/blog" },
   { key: "beauty", label: { EN: "Beauty", FR: "Beauté" }, to: "/#beauty" },
   // IN = likes = UP / OUT = dislikes = DOWN — dedicated graphic page
   { key: "in-out", label: { EN: "In & Out", FR: "In & Out" }, to: "/in-out" },
@@ -10,6 +9,8 @@ export const categories = [
   { key: "lifestyle", label: { EN: "Lifestyle", FR: "Lifestyle" }, to: "/lifestyle" },
   { key: "gourmet", label: { EN: "Gourmet", FR: "Gourmet" }, to: "/gourmet" },
   { key: "design", label: { EN: "Design", FR: "Design" }, to: "/design" },
+  // Blog sits last — after Design
+  { key: "blog", label: { EN: "Blog", FR: "Blog" }, to: "/blog" },
 ];
 
 // Sections that are linked from the site but do not have content yet.

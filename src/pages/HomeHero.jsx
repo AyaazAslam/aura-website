@@ -64,12 +64,11 @@ const HomeHero = () => {
         </div>
 
         {/*
-          Mobile: same horizontal padding as the copy so image + text share one
-          column width (reference screenshot). Natural height keeps the signature.
-          sm+: inset editorial frame; lg+: floating side image returns.
+          Mobile: narrow centered portrait (width kam, natural height) like Edito.
+          sm+: wider inset frame; lg+: floating side image returns.
         */}
         <div className="relative order-1 px-5 pt-6 sm:px-8 lg:order-2 lg:col-span-7 lg:px-0 lg:pt-0">
-          <figure className="relative mx-auto w-full sm:ml-auto sm:w-[88%] md:w-[80%]">
+          <figure className="relative mx-auto w-[55%] max-w-[250px] sm:ml-auto sm:mr-0 sm:w-[88%] sm:max-w-none md:w-[80%]">
             <div className="overflow-hidden bg-linen sm:aspect-[4/5]">
               <StoryImage
                 src="/static-men-image/men.jpeg"
@@ -79,8 +78,8 @@ const HomeHero = () => {
               />
             </div>
 
-            <figcaption className="absolute left-3 top-3 bg-ivory/95 px-3 py-2 sm:left-6 sm:top-6 sm:px-5 sm:py-4">
-              <span className="font-sans text-[9px] font-medium tracking-[0.2em] uppercase sm:text-[10px] sm:tracking-[0.22em]">
+            <figcaption className="absolute left-2 top-2 bg-ivory/95 px-2.5 py-1.5 sm:left-6 sm:top-6 sm:px-5 sm:py-4">
+              <span className="font-sans text-[8px] font-medium tracking-[0.18em] uppercase sm:text-[10px] sm:tracking-[0.22em]">
                 {t.caption}
               </span>
             </figcaption>

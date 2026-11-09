@@ -39,7 +39,7 @@ const BlogPost = () => {
     <main className="bg-ivory">
       <article className="mx-auto max-w-[900px] px-5 py-12 sm:px-8 sm:py-16 md:py-24">
         <figure>
-          <div className="mx-auto w-[78%] max-w-[320px] overflow-hidden bg-linen sm:w-[70%] sm:max-w-[380px] md:w-full md:max-w-[520px] md:aspect-[4/5]">
+          <div className="editorial-portrait md:mx-auto md:max-w-[420px] md:aspect-[4/5]">
             <StoryImage
               src={post.image}
               alt={post.title}

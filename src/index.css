@@ -84,6 +84,16 @@
   @apply font-sans text-[10px] font-medium uppercase tracking-[0.34em];
 }
 
+/*
+  Editorial portrait (mobile reference):
+  - narrower width with ivory side margins (~55%)
+  - natural height (no forced short crop) so the photo keeps its portrait proportions
+  - full column width from md up when used inside a grid column
+*/
+@utility editorial-portrait {
+  @apply mx-auto w-[55%] max-w-[250px] overflow-hidden bg-linen sm:max-w-[280px] md:mx-0 md:w-full md:max-w-none;
+}
+
 /* Solid call to action. */
 @utility btn-solid {
   @apply inline-flex items-center justify-center gap-3 bg-ink px-7 py-4 font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-ivory transition-colors duration-500 ease-luxe hover:bg-oxblood;

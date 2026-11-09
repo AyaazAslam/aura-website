@@ -61,13 +61,11 @@ const Edito = () => {
     <main id="edito" className="bg-ivory" aria-labelledby="edito-title">
       <div className="mx-auto max-w-[1440px] px-5 py-10 sm:px-8 sm:py-14 md:grid md:grid-cols-12 md:items-start md:gap-14 md:py-24 lg:px-12">
         {/*
-          Mobile reference look:
-          - centered portrait with ivory side margins
-          - ~78% width (max ~320px) — decent, not tiny, not edge-to-edge
-          - natural height so face + signature stay visible
+          Mobile reference: narrow width (~55%), natural portrait height
+          (width kam, height proportion same — matches approved phone screenshot).
         */}
         <figure className="md:col-span-4 lg:col-span-3">
-          <div className="mx-auto w-[78%] max-w-[320px] overflow-hidden bg-linen md:w-full md:max-w-none md:aspect-[3/4]">
+          <div className="editorial-portrait md:aspect-[3/4]">
             <StoryImage
               src="/static-men-image/men.jpeg"
               alt={t.portraitAlt}
