@@ -10,8 +10,7 @@ const copy = {
     body: "Trendy looks, funny moments, and unfiltered style — because fashion isn’t just what you wear, it’s how you feel.",
     cta: "Explore the edit",
     slogan: "Be bold / Be you / Be Insolite",
-    caption: "The Main Character",
-    mainAlt: "The main character, a fashion editorial portrait",
+    mainAlt: "Khim Asriel, Insolite Magazine editorial portrait",
     sideAlt: "Funny outfits, a playful street look",
   },
   FR: {
@@ -21,8 +20,7 @@ const copy = {
     body: "Looks tendance, moments drôles et style sans filtre — parce que la mode ne se résume pas à ce que l’on porte, c’est la façon dont on se sent.",
     cta: "Découvrir la sélection",
     slogan: "Soyez audacieux / Soyez vous / Soyez Insolite",
-    caption: "Le personnage principal",
-    mainAlt: "Le personnage principal, portrait éditorial de mode",
+    mainAlt: "Khim Asriel, portrait éditorial Insolite Magazine",
     sideAlt: "Tenues amusantes, look de rue espiègle",
   },
 };
@@ -68,6 +66,7 @@ const HomeHero = () => {
           sm+: wider inset frame; lg+: floating side image returns.
         */}
         <div className="relative order-1 px-5 pt-6 sm:px-8 lg:order-2 lg:col-span-7 lg:px-0 lg:pt-0">
+          {/* “Main Character” label removed — portrait only */}
           <figure className="relative mx-auto w-[55%] max-w-[250px] sm:ml-auto sm:mr-0 sm:w-[88%] sm:max-w-none md:w-[80%]">
             <div className="overflow-hidden bg-linen sm:aspect-[4/5]">
               <StoryImage
@@ -77,12 +76,6 @@ const HomeHero = () => {
                 className="h-auto w-full object-cover object-center img-tone sm:h-full"
               />
             </div>
-
-            <figcaption className="absolute left-2 top-2 bg-ivory/95 px-2.5 py-1.5 sm:left-6 sm:top-6 sm:px-5 sm:py-4">
-              <span className="font-sans text-[8px] font-medium tracking-[0.18em] uppercase sm:text-[10px] sm:tracking-[0.22em]">
-                {t.caption}
-              </span>
-            </figcaption>
           </figure>
 
           <div className="absolute -bottom-10 left-0 hidden w-[42%] border-[8px] border-ivory bg-linen sm:block md:-left-10 md:w-[36%] lg:-left-14">
