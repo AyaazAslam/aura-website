@@ -1,5 +1,6 @@
 // Shared site navigation. Used by the header and the footer.
 // Order from client: Edito → Beauty → Lifestyle → Gourmet → Design → In & Out → Article
+// Client menu only — Edito, Beauté, Lifestyle, Gourmet, Design, In & Out
 export const categories = [
   { key: "edito", label: { EN: "Edito", FR: "Edito" }, to: "/edito" },
   { key: "beauty", label: { EN: "Beauty", FR: "Beauté" }, to: "/#beauty" },
@@ -8,7 +9,6 @@ export const categories = [
   { key: "design", label: { EN: "Design", FR: "Design" }, to: "/design" },
   // IN = likes = UP / OUT = dislikes = DOWN
   { key: "in-out", label: { EN: "In & Out", FR: "In & Out" }, to: "/in-out" },
-  { key: "blog", label: { EN: "Article", FR: "Article" }, to: "/blog" },
 ];
 
 // Sections that are linked from the site but do not have content yet.
