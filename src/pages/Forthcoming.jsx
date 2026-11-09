@@ -35,7 +35,7 @@ const Forthcoming = ({ page }) => {
         {t.body}
       </p>
 
-      <Link to="/" className="link-line mt-12">
+      <Link to="/edito" className="link-line mt-12">
         {t.back}
       </Link>
     </main>

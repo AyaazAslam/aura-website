@@ -85,11 +85,11 @@ const ArticlePage = () => {
 
         <div className="mt-14 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
           {/* Fashion hub removed — send readers back to the home latest grid */}
-          <Link to="/#latest" className="btn-line">
+          <Link to="/magazine#latest" className="btn-line">
             {t.browse}
           </Link>
 
-          <Link to="/" className="link-line">
+          <Link to="/magazine" className="link-line">
             {t.back}
           </Link>
         </div>

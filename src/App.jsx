@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 
 import LanguageProvider from "./common/LanguageProvider";
 import ScrollToTop from "./common/ScrollToTop";
@@ -23,12 +23,12 @@ function App() {
 
           <div className="flex-1">
             <Routes>
-              <Route path="/" element={<Home />} />
-              {/* Edito is menu-only — kept off the homepage to preserve design */}
+              {/* Site default landing — Edito (matches Vercel `/` → `/edito`) */}
+              <Route path="/" element={<Navigate to="/edito" replace />} />
               <Route path="/edito" element={<Edito />} />
-              {/* IN/OUT graphic page — UP (likes) / DOWN (dislikes) */}
+              {/* Full magazine home (Hero, Beauty, Latest, …) */}
+              <Route path="/magazine" element={<Home />} />
               <Route path="/in-out" element={<InOut />} />
-              {/* Fashion routes removed — section not used for this client build */}
 
               {Object.entries(forthcomingPages).map(([slug, page]) => (
                 <Route

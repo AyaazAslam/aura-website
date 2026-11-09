@@ -78,7 +78,7 @@ const MobileMenu = ({ onClose, lang, t }) => (
         <LanguageSwitch className="flex" />
       </div>
 
-      <Link to="/" onClick={onClose} aria-label="Insolite Magazine home">
+      <Link to="/edito" onClick={onClose} aria-label="Insolite Magazine home">
         <Logo />
       </Link>
 
@@ -113,7 +113,7 @@ const MobileMenu = ({ onClose, lang, t }) => (
 
     <div className="px-6 pt-10 pb-10">
       <Link
-        to="/#subscribe"
+        to="/magazine#subscribe"
         onClick={onClose}
         className="btn-solid w-full"
       >
@@ -188,7 +188,7 @@ const Navbar = () => {
           </div>
 
           <Link
-            to="/"
+            to="/edito"
             aria-label="Insolite Magazine home"
             className="min-w-0 justify-self-center scale-[0.78] sm:scale-100"
           >
@@ -200,7 +200,7 @@ const Navbar = () => {
             <LanguageSwitch className="flex !gap-1 !px-0 text-[10px] tracking-[0.12em] md:hidden" />
 
             <Link
-              to="/#subscribe"
+              to="/magazine#subscribe"
               className="hidden bg-ink px-5 py-3 font-sans text-[10px] font-medium tracking-[0.22em] text-ivory uppercase transition-colors duration-500 hover:bg-oxblood md:inline-flex"
             >
               {t.subscribe}
