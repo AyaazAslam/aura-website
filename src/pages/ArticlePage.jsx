@@ -31,12 +31,12 @@ const findStory = (slug) => allStories.find((story) => storySlug(story) === slug
 const copy = {
   EN: {
     pending: "The full article is being prepared for an upcoming issue.",
-    browse: "Browse fashion",
+    browse: "Back to latest stories",
     back: "Back to the magazine",
   },
   FR: {
     pending: "L’article complet est en préparation pour un prochain numéro.",
-    browse: "Voir la mode",
+    browse: "Retour aux dernières histoires",
     back: "Retour au magazine",
   },
 };
@@ -84,7 +84,8 @@ const ArticlePage = () => {
         </p>
 
         <div className="mt-14 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
-          <Link to="/fashion" className="btn-line">
+          {/* Fashion hub removed — send readers back to the home latest grid */}
+          <Link to="/#latest" className="btn-line">
             {t.browse}
           </Link>
 

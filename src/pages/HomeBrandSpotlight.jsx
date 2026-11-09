@@ -72,7 +72,8 @@ const HomeBrandSpotlight = () => {
             {t.bodyB}
           </p>
 
-          <a href="#fashion" className="link-line mt-8">
+          {/* Fashion section removed — CTA points to Beauty instead */}
+          <a href="#beauty" className="link-line mt-8">
             {t.cta}
             <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden="true" />
           </a>

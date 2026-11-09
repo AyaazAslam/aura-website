@@ -1,13 +1,14 @@
 import { useLanguage } from "../common/language";
+import { useDocumentTitle } from "../common/useDocumentTitle";
 import { StoryImage } from "../common/ui";
 import { siteConfig } from "../common/siteConfig";
 
 /**
- * Home EDITO — the editor’s weekly letter.
- * Always rendered first on the home page (see `home.jsx`).
+ * EDITO page — editor’s weekly letter (`/edito`).
  *
- * Mobile: portrait is full-bleed (edge-to-edge) so it doesn’t sit in a tiny
- * padded box. Desktop: side-by-side column layout is unchanged.
+ * Mobile portrait matches the approved reference: centered on the ivory field
+ * with side breathing room (not full-bleed, not a tiny stamp), natural aspect
+ * so the signature stays visible. Desktop keeps the side-by-side letter layout.
  *
  * Portrait asset: `/public/static-men-image/men.jpeg`
  */
@@ -50,43 +51,42 @@ const copy = {
   },
 };
 
-const HomeEdito = () => {
+const Edito = () => {
   const { lang } = useLanguage();
   const t = copy[lang];
 
+  useDocumentTitle(t.label);
+
   return (
-    <section id="edito" className="bg-ivory" aria-labelledby="edito-title">
-      {/*
-        Mobile: stacked full-bleed image + padded letter.
-        md+: 12-column grid with portrait beside the letter (original flow).
-      */}
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center px-5 pt-10 sm:px-8 md:grid-cols-12 md:gap-14 md:px-8 md:py-24 lg:px-12">
+    <main id="edito" className="bg-ivory" aria-labelledby="edito-title">
+      <div className="mx-auto max-w-[1440px] px-5 py-10 sm:px-8 sm:py-14 md:grid md:grid-cols-12 md:items-start md:gap-14 md:py-24 lg:px-12">
         {/*
-          Editor portrait.
-          Mobile: compact centered card (~220px) so it doesn’t eat the viewport;
-          keeps face + signature readable. Desktop: column beside the letter.
+          Mobile reference look:
+          - centered portrait with ivory side margins
+          - ~78% width (max ~320px) — decent, not tiny, not edge-to-edge
+          - natural height so face + signature stay visible
         */}
         <figure className="md:col-span-4 lg:col-span-3">
-          <div className="mx-auto aspect-[3/4] w-[58%] max-w-[220px] overflow-hidden bg-linen sm:w-[50%] sm:max-w-[260px] md:w-full md:max-w-none">
+          <div className="mx-auto w-[78%] max-w-[320px] overflow-hidden bg-linen md:w-full md:max-w-none md:aspect-[3/4]">
             <StoryImage
               src="/static-men-image/men.jpeg"
               alt={t.portraitAlt}
               eager
-              className="h-full w-full object-cover object-center img-tone"
+              className="h-auto w-full object-cover object-center img-tone md:h-full"
             />
           </div>
         </figure>
 
-        {/* Letter body */}
-        <div className="py-8 md:col-span-8 md:py-0 lg:col-span-9 lg:max-w-3xl">
+        {/* Letter — left-aligned under the content padding, matching the reference */}
+        <div className="mt-8 md:col-span-8 md:mt-0 lg:col-span-9 lg:max-w-3xl">
           <p className="eyebrow text-stone">{t.label}</p>
 
-          <h2
+          <h1
             id="edito-title"
-            className="mt-3 font-serif text-[2rem] italic leading-[1.05] sm:text-5xl md:text-6xl"
+            className="mt-3 font-serif text-[1.85rem] italic leading-[1.08] sm:text-5xl md:text-6xl"
           >
             {t.headline}
-          </h2>
+          </h1>
 
           <div className="mt-5 h-px w-16 bg-ink md:mt-6" />
 
@@ -133,8 +133,8 @@ const HomeEdito = () => {
           </address>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 
-export default HomeEdito;
+export default Edito;

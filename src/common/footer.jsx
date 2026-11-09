@@ -57,11 +57,19 @@ const content = {
   },
 };
 
+/**
+ * Shared footer type scale — every column title uses the same eyebrow style
+ * so “Explore / Magazine / Newsletter / Brand” read as one system (not mixed
+ * serif + sans). Nav links share one serif size for visual consistency.
+ */
 const columnTitle =
   "font-sans text-[10px] font-medium tracking-[0.3em] text-ivory uppercase";
 
-const footerLink =
-  "transition-colors duration-300 hover:text-ivory";
+const navLink =
+  "font-serif text-[1.35rem] leading-none text-ivory/90 transition-colors duration-300 hover:text-ivory sm:text-2xl";
+
+const metaLink =
+  "font-sans text-sm leading-none text-ivory/70 transition-colors duration-300 hover:text-ivory";
 
 const Footer = () => {
   const { lang } = useLanguage();
@@ -69,42 +77,48 @@ const Footer = () => {
 
   return (
     <footer className="bg-ink text-ivory/75">
-      <div className="mx-auto max-w-[1440px] px-5 pt-16 sm:px-8 lg:px-12 lg:pt-20">
-        {/* Brand */}
-        <div className="flex flex-col items-center border-b border-ivory/15 pb-14 text-center">
-          <Link to="/" aria-label="Insolite Magazine home" className="text-ivory">
+      <div className="mx-auto max-w-[1440px] px-5 pt-12 sm:px-8 sm:pt-16 lg:px-12 lg:pt-20">
+        {/* Brand — logo scales down on mobile so it matches header proportions */}
+        <div className="flex flex-col items-center border-b border-ivory/15 pb-10 text-center sm:pb-14">
+          <Link
+            to="/"
+            aria-label="Insolite Magazine home"
+            className="scale-[0.85] text-ivory sm:scale-100"
+          >
             <Logo size="lg" />
           </Link>
 
-          <p className="mt-8 font-serif text-2xl italic text-ivory/80 sm:text-3xl">
+          <p className="mt-6 font-serif text-xl italic text-ivory/80 sm:mt-8 sm:text-3xl">
             {t.tagline}
           </p>
         </div>
 
-        {/* Columns */}
-        <div className="grid grid-cols-1 gap-12 border-b border-ivory/15 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+        {/*
+          Columns — one title style everywhere.
+          Mobile: single stack with even gaps. Desktop: 12-col editorial grid.
+        */}
+        <div className="grid grid-cols-1 gap-10 border-b border-ivory/15 py-10 sm:grid-cols-2 sm:gap-12 sm:py-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-3">
             <h2 className={columnTitle}>Insolite Magazine</h2>
 
-            <p className="mt-6 max-w-xs font-sans text-sm leading-7 text-ivory/65">
+            <p className="mt-5 max-w-xs font-sans text-[15px] leading-7 text-ivory/65 sm:mt-6 sm:text-sm">
               {t.description}
             </p>
 
-            {/* Client headquarters + contact — kept in sync via siteConfig */}
-            <p className="mt-6 font-sans text-sm leading-7 text-ivory/65">
+            <p className="mt-5 font-sans text-[15px] leading-7 text-ivory/65 sm:mt-6 sm:text-sm">
               {siteConfig.address}
             </p>
 
             {siteConfig.contactEmail && (
               <a
                 href={`mailto:${siteConfig.contactEmail}`}
-                className="mt-2 inline-block font-sans text-sm text-ivory/80 transition-colors duration-300 hover:text-ivory"
+                className="mt-2 inline-block font-sans text-[15px] text-ivory/80 transition-colors duration-300 hover:text-ivory sm:text-sm"
               >
                 {siteConfig.contactEmail}
               </a>
             )}
 
-            <p className="mt-6 font-sans text-[10px] tracking-[0.25em] text-ivory/45 uppercase">
+            <p className="mt-5 font-sans text-[10px] tracking-[0.25em] text-ivory/45 uppercase sm:mt-6">
               {t.location}
             </p>
           </div>
@@ -112,13 +126,10 @@ const Footer = () => {
           <div className="lg:col-span-2 lg:col-start-5">
             <h2 className={columnTitle}>{t.explore}</h2>
 
-            <ul className="mt-6 space-y-4" translate="no">
+            <ul className="mt-5 space-y-4 sm:mt-6" translate="no">
               {categories.map((item) => (
                 <li key={item.key}>
-                  <Link
-                    to={item.to}
-                    className={`font-serif text-2xl leading-none text-ivory/90 ${footerLink}`}
-                  >
+                  <Link to={item.to} className={navLink}>
                     {item.label[lang]}
                   </Link>
                 </li>
@@ -129,22 +140,29 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <h2 className={columnTitle}>{t.magazine}</h2>
 
-            <ul className="mt-6 space-y-4 font-sans text-sm">
+            {/* Same serif link type as Explore — was plain sans before */}
+            <ul className="mt-5 space-y-4 sm:mt-6">
               <li>
-                <Link to="/about" className={footerLink}>
+                <Link to="/edito" className={navLink}>
+                  Edito
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/about" className={navLink}>
                   {t.about}
                 </Link>
               </li>
 
               <li>
-                <Link to="/#in-out" className={footerLink}>
+                <Link to="/in-out" className={navLink}>
                   {t.inout}
                 </Link>
               </li>
 
               {siteConfig.contactEmail && (
                 <li>
-                  <a href={`mailto:${siteConfig.contactEmail}`} className={footerLink}>
+                  <a href={`mailto:${siteConfig.contactEmail}`} className={navLink}>
                     {t.contact}
                   </a>
                 </li>
@@ -156,25 +174,24 @@ const Footer = () => {
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-block font-sans text-[10px] tracking-[0.22em] text-ivory/80 uppercase transition-colors duration-300 hover:text-ivory"
+                className="mt-7 inline-block font-sans text-[10px] tracking-[0.22em] text-ivory/80 uppercase transition-colors duration-300 hover:text-ivory sm:mt-8"
               >
                 Instagram ↗
               </a>
             )}
           </div>
 
-          <div className="lg:col-span-3">
-            <h2 className="font-serif text-3xl leading-none text-ivory">
-              {t.newsletter}
-            </h2>
+          <div className="sm:col-span-2 lg:col-span-3 lg:col-start-10">
+            {/* Same eyebrow title as every other column (was mismatched serif) */}
+            <h2 className={columnTitle}>{t.newsletter}</h2>
 
-            <p className="mt-5 font-sans text-sm leading-6 text-ivory/65">
+            <p className="mt-5 font-sans text-[15px] leading-7 text-ivory/65 sm:mt-6 sm:text-sm sm:leading-6">
               {t.newsletterText}
             </p>
 
             <NewsletterForm
               id="footer-email"
-              className="mt-7"
+              className="mt-6 sm:mt-7"
               labels={{
                 placeholder: t.placeholder,
                 subscribe: t.subscribe,
@@ -188,17 +205,17 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-6 py-8 text-center sm:flex-row sm:text-left">
-          <p className="font-sans text-[10px] tracking-[0.14em] text-ivory/45 uppercase">
+        <div className="flex flex-col items-center justify-between gap-5 py-7 text-center sm:flex-row sm:gap-6 sm:py-8 sm:text-left">
+          <p className="max-w-sm font-sans text-[10px] leading-5 tracking-[0.14em] text-ivory/45 uppercase sm:max-w-none">
             © {currentYear} Insolite Magazine x Khim Asriel. {t.rights}
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-sans text-[11px] text-ivory/55">
-            <Link to="/privacy" className={footerLink}>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-6">
+            <Link to="/privacy" className={metaLink}>
               {t.policy}
             </Link>
 
-            <Link to="/terms" className={footerLink}>
+            <Link to="/terms" className={metaLink}>
               {t.terms}
             </Link>
 
@@ -207,11 +224,11 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Editorial signature */}
+      {/* Editorial signature — capped on mobile so it doesn’t overwhelm */}
       <div className="overflow-hidden border-t border-ivory/15 py-2 text-center">
         <p
           aria-hidden="true"
-          className="font-serif text-[clamp(2rem,6.5vw,6rem)] leading-none tracking-[-0.04em] whitespace-nowrap text-ivory/[0.07]"
+          className="font-serif text-[clamp(1.75rem,8vw,6rem)] leading-none tracking-[-0.04em] whitespace-nowrap text-ivory/[0.07]"
         >
           INSOLITE MAGAZINE
         </p>

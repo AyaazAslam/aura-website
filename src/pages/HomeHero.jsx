@@ -27,26 +27,28 @@ const copy = {
   },
 };
 
+/**
+ * Home hero.
+ * Mobile matches the approved phone reference: padded (not full-bleed) portrait,
+ * then eyebrow → lead → HUMEUR → body in the same content column.
+ * lg+: original two-column editorial layout with floating inset.
+ */
 const HomeHero = () => {
   const { lang } = useLanguage();
   const t = copy[lang];
 
   return (
     <section className="bg-ivory">
-      {/*
-        Mobile: full-bleed hero image (no side gutters), copy padded below.
-        lg+: original two-column editorial composition with inset imagery.
-      */}
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-end gap-10 pb-14 sm:gap-14 sm:pb-16 md:pb-24 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:pt-20">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-end gap-8 pb-12 sm:gap-14 sm:pb-16 md:pb-24 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:pt-20">
+        {/* Copy — sits under the portrait on mobile, left column on desktop */}
         <div className="order-2 px-5 sm:px-8 lg:order-1 lg:col-span-5 lg:px-0 lg:pb-10">
           <p className="eyebrow motion-safe:animate-fade-up">{t.eyebrow}</p>
 
-          <p className="mt-4 font-serif text-3xl italic motion-safe:animate-fade-up sm:text-4xl">
+          <p className="mt-4 font-serif text-[1.65rem] italic motion-safe:animate-fade-up sm:text-4xl">
             {t.lead}
           </p>
 
-          {/* Expressive but capped so it does not dominate the mobile screen */}
-          <h1 className="mt-1 font-serif text-[clamp(3rem,14vw,7.5rem)] leading-[0.85] tracking-[-0.03em] motion-safe:animate-fade-up">
+          <h1 className="mt-1 font-serif text-[clamp(2.75rem,13vw,7.5rem)] leading-[0.85] tracking-[-0.03em] motion-safe:animate-fade-up">
             <span className="sr-only">{t.lead} </span>
             <span className="italic">{t.title}</span>
           </h1>
@@ -61,26 +63,29 @@ const HomeHero = () => {
           </a>
         </div>
 
-        {/* Imagery — edge-to-edge on mobile; inset composition from sm up */}
-        <div className="relative order-1 pt-0 lg:order-2 lg:col-span-7 lg:pt-0">
-          <figure className="relative w-full sm:ml-auto sm:w-[88%] md:w-[80%]">
-            <div className="aspect-[4/5] overflow-hidden bg-linen sm:aspect-[4/5]">
+        {/*
+          Mobile: same horizontal padding as the copy so image + text share one
+          column width (reference screenshot). Natural height keeps the signature.
+          sm+: inset editorial frame; lg+: floating side image returns.
+        */}
+        <div className="relative order-1 px-5 pt-6 sm:px-8 lg:order-2 lg:col-span-7 lg:px-0 lg:pt-0">
+          <figure className="relative mx-auto w-full sm:ml-auto sm:w-[88%] md:w-[80%]">
+            <div className="overflow-hidden bg-linen sm:aspect-[4/5]">
               <StoryImage
-                src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1400&q=90"
+                src="/static-men-image/men.jpeg"
                 alt={t.mainAlt}
                 eager
-                className="h-full w-full object-cover object-center img-tone"
+                className="h-auto w-full object-cover object-center img-tone sm:h-full"
               />
             </div>
 
-            <figcaption className="absolute left-4 top-4 bg-ivory/95 px-4 py-3 sm:left-6 sm:top-6 sm:px-5 sm:py-4">
-              <span className="font-sans text-[10px] font-medium tracking-[0.22em] uppercase">
+            <figcaption className="absolute left-3 top-3 bg-ivory/95 px-3 py-2 sm:left-6 sm:top-6 sm:px-5 sm:py-4">
+              <span className="font-sans text-[9px] font-medium tracking-[0.2em] uppercase sm:text-[10px] sm:tracking-[0.22em]">
                 {t.caption}
               </span>
             </figcaption>
           </figure>
 
-          {/* Floating inset — only from sm up so the mobile hero stays clean and full-bleed */}
           <div className="absolute -bottom-10 left-0 hidden w-[42%] border-[8px] border-ivory bg-linen sm:block md:-left-10 md:w-[36%] lg:-left-14">
             <div className="aspect-[3/4] overflow-hidden">
               <StoryImage
