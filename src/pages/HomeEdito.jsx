@@ -5,7 +5,9 @@ import { siteConfig } from "../common/siteConfig";
 /**
  * Home EDITO — the editor’s weekly letter.
  * Always rendered first on the home page (see `home.jsx`).
- * Copy and contact details come from the client; keep article data files unchanged.
+ *
+ * Mobile: portrait is full-bleed (edge-to-edge) so it doesn’t sit in a tiny
+ * padded box. Desktop: side-by-side column layout is unchanged.
  *
  * Portrait asset: `/public/static-men-image/men.jpeg`
  */
@@ -54,56 +56,71 @@ const HomeEdito = () => {
 
   return (
     <section id="edito" className="bg-ivory" aria-labelledby="edito-title">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:gap-14 md:py-24 lg:px-12">
-        {/* Editor portrait — client static asset */}
+      {/*
+        Mobile: stacked full-bleed image + padded letter.
+        md+: 12-column grid with portrait beside the letter (original flow).
+      */}
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center px-5 pt-10 sm:px-8 md:grid-cols-12 md:gap-14 md:px-8 md:py-24 lg:px-12">
+        {/*
+          Editor portrait.
+          Mobile: compact centered card (~220px) so it doesn’t eat the viewport;
+          keeps face + signature readable. Desktop: column beside the letter.
+        */}
         <figure className="md:col-span-4 lg:col-span-3">
-          <div className="mx-auto aspect-[3/4] max-w-xs overflow-hidden bg-linen md:max-w-none">
+          <div className="mx-auto aspect-[3/4] w-[58%] max-w-[220px] overflow-hidden bg-linen sm:w-[50%] sm:max-w-[260px] md:w-full md:max-w-none">
             <StoryImage
               src="/static-men-image/men.jpeg"
               alt={t.portraitAlt}
               eager
-              className="h-full w-full object-cover img-tone"
+              className="h-full w-full object-cover object-center img-tone"
             />
           </div>
         </figure>
 
         {/* Letter body */}
-        <div className="md:col-span-8 lg:col-span-9 lg:max-w-3xl">
-          {/* Eyebrow sits close to the headline (spacing rhythm). */}
+        <div className="py-8 md:col-span-8 md:py-0 lg:col-span-9 lg:max-w-3xl">
           <p className="eyebrow text-stone">{t.label}</p>
 
           <h2
             id="edito-title"
-            className="mt-3 font-serif text-4xl italic leading-[1.05] sm:text-5xl md:text-6xl"
+            className="mt-3 font-serif text-[2rem] italic leading-[1.05] sm:text-5xl md:text-6xl"
           >
             {t.headline}
           </h2>
 
-          <div className="mt-6 h-px w-16 bg-ink" />
+          <div className="mt-5 h-px w-16 bg-ink md:mt-6" />
 
-          <p className="mt-6 font-sans text-base leading-8 text-stone">{t.intro}</p>
+          <p className="mt-5 font-sans text-[15px] leading-7 text-stone sm:text-base sm:leading-8 md:mt-6">
+            {t.intro}
+          </p>
 
-          <p className="mt-6 font-sans text-base leading-8 text-stone">{t.inspiring}</p>
+          <p className="mt-5 font-sans text-[15px] leading-7 text-stone sm:text-base sm:leading-8 md:mt-6">
+            {t.inspiring}
+          </p>
 
-          <ul className="mt-4 space-y-3 font-sans text-base leading-8 text-stone">
+          <ul className="mt-4 space-y-3 font-sans text-[15px] leading-7 text-stone sm:text-base sm:leading-8">
             {t.points.map((point) => (
               <li key={point} className="flex gap-3">
-                <span aria-hidden="true" className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-oxblood" />
+                <span
+                  aria-hidden="true"
+                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-oxblood"
+                />
                 <span>{point}</span>
               </li>
             ))}
           </ul>
 
-          <p className="mt-6 font-sans text-base leading-8 text-stone">{t.closing}</p>
+          <p className="mt-5 font-sans text-[15px] leading-7 text-stone sm:text-base sm:leading-8 md:mt-6">
+            {t.closing}
+          </p>
 
-          <p className="mt-8 font-serif text-xl italic sm:text-2xl">
+          <p className="mt-7 font-serif text-xl italic sm:mt-8 sm:text-2xl">
             <span aria-hidden="true">🍂 </span>
             {t.signOff}
           </p>
           <p className="mt-2 font-serif text-xl sm:text-2xl">{t.byline}</p>
 
-          {/* Public contact block — address + email from client brief */}
-          <address className="mt-8 not-italic">
+          <address className="mt-7 not-italic sm:mt-8">
             <p className="font-sans text-sm leading-7 text-stone">{siteConfig.address}</p>
             {siteConfig.contactEmail && (
               <a

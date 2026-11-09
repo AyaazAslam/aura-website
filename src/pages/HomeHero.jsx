@@ -33,46 +33,43 @@ const HomeHero = () => {
 
   return (
     <section className="bg-ivory">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-end gap-14 px-5 pt-12 pb-16 sm:px-8 md:pt-16 md:pb-24 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:pt-20">
-        {/*
-          Copy block.
-          HUMEUR. / MOOD. stays a stylistic concept but is capped so it does not
-          cannibalize the rest of the first screen (hierarchy fix).
-          Eyebrow → lead → title gaps are tightened for a closer subtitle rhythm.
-        */}
-        <div className="order-2 lg:order-1 lg:col-span-5 lg:pb-10">
+      {/*
+        Mobile: full-bleed hero image (no side gutters), copy padded below.
+        lg+: original two-column editorial composition with inset imagery.
+      */}
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-end gap-10 pb-14 sm:gap-14 sm:pb-16 md:pb-24 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:pt-20">
+        <div className="order-2 px-5 sm:px-8 lg:order-1 lg:col-span-5 lg:px-0 lg:pb-10">
           <p className="eyebrow motion-safe:animate-fade-up">{t.eyebrow}</p>
 
           <p className="mt-4 font-serif text-3xl italic motion-safe:animate-fade-up sm:text-4xl">
             {t.lead}
           </p>
 
-          {/* Was clamp(5rem, 15vw, 11.5rem) — reduced so the word stays expressive, not dominant */}
-          <h1 className="mt-1 font-serif text-[clamp(3.25rem,10vw,7.5rem)] leading-[0.85] tracking-[-0.03em] motion-safe:animate-fade-up">
+          {/* Expressive but capped so it does not dominate the mobile screen */}
+          <h1 className="mt-1 font-serif text-[clamp(3rem,14vw,7.5rem)] leading-[0.85] tracking-[-0.03em] motion-safe:animate-fade-up">
             <span className="sr-only">{t.lead} </span>
             <span className="italic">{t.title}</span>
           </h1>
 
-          {/* Consistent space under body copy before the CTA / next visual */}
-          <p className="mt-8 max-w-sm font-sans text-base leading-8 text-stone motion-safe:animate-fade-up">
+          <p className="mt-6 max-w-sm font-sans text-[15px] leading-7 text-stone motion-safe:animate-fade-up sm:mt-8 sm:text-base sm:leading-8">
             {t.body}
           </p>
 
-          <a href="#latest" className="btn-solid mt-8 motion-safe:animate-fade-up">
+          <a href="#latest" className="btn-solid mt-7 motion-safe:animate-fade-up sm:mt-8">
             {t.cta}
             <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
           </a>
         </div>
 
-        {/* Imagery */}
-        <div className="relative order-1 lg:order-2 lg:col-span-7">
-          <figure className="relative ml-auto w-[88%] sm:w-[80%]">
-            <div className="aspect-[4/5] overflow-hidden bg-linen">
+        {/* Imagery — edge-to-edge on mobile; inset composition from sm up */}
+        <div className="relative order-1 pt-0 lg:order-2 lg:col-span-7 lg:pt-0">
+          <figure className="relative w-full sm:ml-auto sm:w-[88%] md:w-[80%]">
+            <div className="aspect-[4/5] overflow-hidden bg-linen sm:aspect-[4/5]">
               <StoryImage
                 src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1400&q=90"
                 alt={t.mainAlt}
                 eager
-                className="h-full w-full object-cover img-tone"
+                className="h-full w-full object-cover object-center img-tone"
               />
             </div>
 
@@ -83,7 +80,8 @@ const HomeHero = () => {
             </figcaption>
           </figure>
 
-          <div className="absolute -bottom-10 left-0 w-[42%] border-[8px] border-ivory bg-linen sm:-left-10 sm:w-[36%] lg:-left-14">
+          {/* Floating inset — only from sm up so the mobile hero stays clean and full-bleed */}
+          <div className="absolute -bottom-10 left-0 hidden w-[42%] border-[8px] border-ivory bg-linen sm:block md:-left-10 md:w-[36%] lg:-left-14">
             <div className="aspect-[3/4] overflow-hidden">
               <StoryImage
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85"
@@ -95,7 +93,6 @@ const HomeHero = () => {
         </div>
       </div>
 
-      {/* Footer line */}
       <div className="mx-auto flex max-w-[1440px] flex-col gap-3 border-t border-ink/15 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
         <p className="eyebrow text-ink/70">Insolite Magazine x Khim Asriel</p>
 

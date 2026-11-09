@@ -168,12 +168,11 @@ const Navbar = () => {
         </div>
 
         {/*
-          Main row — three columns give the language control breathing room
-          away from the centered logo and the hamburger (mobile spacing fix).
+          Main row — on mobile the side columns stay compact so the logo
+          has room; language / menu never collide with the wordmark.
         */}
-        <div className="mx-auto grid h-24 max-w-[1440px] grid-cols-[minmax(4.5rem,1fr)_auto_minmax(4.5rem,1fr)] items-center px-5 sm:px-8 md:h-28 lg:px-12">
+        <div className="mx-auto grid h-[4.5rem] max-w-[1440px] grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-1 px-3 sm:h-24 sm:grid-cols-[minmax(4.5rem,1fr)_auto_minmax(4.5rem,1fr)] sm:gap-x-0 sm:px-8 md:h-28 lg:px-12">
           <div className="flex items-center justify-start">
-            {/* Desktop: language lives on the left, clear of the wordmark */}
             <LanguageSwitch className="hidden md:flex" />
 
             <button
@@ -182,19 +181,23 @@ const Navbar = () => {
               aria-label={t.openMenu}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
-              className="-ml-2 p-2 md:hidden"
+              className="p-1.5 md:hidden"
             >
               <Menu className="h-5 w-5" strokeWidth={1.25} />
             </button>
           </div>
 
-          <Link to="/" aria-label="Insolite Magazine home" className="justify-self-center">
+          <Link
+            to="/"
+            aria-label="Insolite Magazine home"
+            className="min-w-0 justify-self-center scale-[0.78] sm:scale-100"
+          >
             <Logo />
           </Link>
 
-          <div className="flex items-center justify-end gap-3 sm:gap-4">
-            {/* Mobile: language on the far right so it never crowds the logo */}
-            <LanguageSwitch className="flex md:hidden" />
+          <div className="flex items-center justify-end pl-1">
+            {/* Compact FR/EN — smaller tracking so it fits without crowding the logo */}
+            <LanguageSwitch className="flex !gap-1 !px-0 text-[10px] tracking-[0.12em] md:hidden" />
 
             <Link
               to="/#subscribe"

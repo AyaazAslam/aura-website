@@ -35,36 +35,42 @@ const HomeBrandSpotlight = () => {
 
   return (
     <section className="bg-linen">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 md:grid-cols-2 md:gap-16 md:py-28 lg:px-12">
-        {/* Image */}
-        <div className="relative mx-auto w-full max-w-xl">
+      {/*
+        Mobile: image goes full-bleed; copy keeps horizontal padding.
+        md+: original two-column layout restored.
+      */}
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-10 pb-16 sm:gap-14 sm:pb-20 md:grid-cols-2 md:gap-16 md:px-8 md:py-28 lg:px-12">
+        <div className="relative w-full md:mx-auto md:max-w-xl">
           <div className="aspect-[4/5] overflow-hidden bg-ivory">
             <StoryImage
               src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=85"
               alt={t.alt}
-              className="h-full w-full object-cover img-tone"
+              className="h-full w-full object-cover object-center img-tone"
             />
           </div>
 
-          <p className="absolute bottom-6 left-0 bg-ivory px-5 py-3 font-serif text-lg italic sm:px-6 sm:py-4 sm:text-xl">
+          <p className="absolute bottom-5 left-0 bg-ivory px-4 py-2.5 font-serif text-base italic sm:bottom-6 sm:px-6 sm:py-4 sm:text-xl">
             {t.caption}
           </p>
         </div>
 
-        {/* Content — eyebrow sits close to the heading; body → CTA spacing standardized */}
-        <div className="max-w-xl md:pl-4">
+        <div className="max-w-xl px-5 sm:px-8 md:pl-4 md:px-0">
           <p className="eyebrow text-stone">{t.eyebrow}</p>
 
-          <h2 className="mt-3 font-serif text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
+          <h2 className="mt-3 font-serif text-4xl leading-[0.98] sm:text-5xl md:text-6xl lg:text-7xl">
             {t.titleA}
             <span className="block italic text-oxblood">{t.titleB}</span>
           </h2>
 
           <div className="mt-6 h-px w-16 bg-ink" />
 
-          <p className="mt-6 font-sans text-base leading-8 text-stone">{t.bodyA}</p>
+          <p className="mt-6 font-sans text-[15px] leading-7 text-stone sm:text-base sm:leading-8">
+            {t.bodyA}
+          </p>
 
-          <p className="mt-4 font-sans text-base leading-8 text-stone">{t.bodyB}</p>
+          <p className="mt-4 font-sans text-[15px] leading-7 text-stone sm:text-base sm:leading-8">
+            {t.bodyB}
+          </p>
 
           <a href="#fashion" className="link-line mt-8">
             {t.cta}
