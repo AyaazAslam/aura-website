@@ -11,10 +11,10 @@ import NotFound from "./NotFound";
  */
 const copy = {
   EN: {
-    back: "Back to the blog",
+    back: "Back to articles",
   },
   FR: {
-    back: "Retour au blog",
+    back: "Retour aux articles",
   },
 };
 

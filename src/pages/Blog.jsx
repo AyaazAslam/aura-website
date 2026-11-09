@@ -11,16 +11,16 @@ import { blogPosts, localizeBlogPost } from "../data/blogPosts";
  */
 const copy = {
   EN: {
-    label: "Blog",
+    label: "Article",
     title: "The Insolite Journal",
     intro: "Notes, rituals, and taste reports from the magazine — static stories for this issue.",
-    read: "Read the story",
+    read: "Read the article",
   },
   FR: {
-    label: "Blog",
+    label: "Article",
     title: "Le journal Insolite",
     intro: "Notes, rituels et rapports de goût du magazine — histoires statiques pour ce numéro.",
-    read: "Lire l’histoire",
+    read: "Lire l’article",
   },
 };
 

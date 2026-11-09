@@ -150,7 +150,7 @@ const Footer = () => {
 
               <li>
                 <Link to="/blog" className={navLink}>
-                  Blog
+                  Article
                 </Link>
               </li>
 

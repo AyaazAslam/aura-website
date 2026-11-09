@@ -9,8 +9,8 @@ export const categories = [
   { key: "lifestyle", label: { EN: "Lifestyle", FR: "Lifestyle" }, to: "/lifestyle" },
   { key: "gourmet", label: { EN: "Gourmet", FR: "Gourmet" }, to: "/gourmet" },
   { key: "design", label: { EN: "Design", FR: "Design" }, to: "/design" },
-  // Blog sits last — after Design
-  { key: "blog", label: { EN: "Blog", FR: "Blog" }, to: "/blog" },
+  // Articles sits last — after Design (URL stays /blog)
+  { key: "blog", label: { EN: "Article", FR: "Article" }, to: "/blog" },
 ];
 
 // Sections that are linked from the site but do not have content yet.
